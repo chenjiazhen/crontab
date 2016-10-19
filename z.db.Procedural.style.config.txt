@@ -1,0 +1,36 @@
+Procedural style
+
+<?php
+$link = mysqli_connect("localhost", "my_user", "my_password", "world");
+
+if (!$link) {
+    printf("Can't connect to localhost. Error: %s\n", mysqli_connect_error());
+    exit();
+}
+
+/* Insert rows */
+mysqli_query($link, "CREATE TABLE Language SELECT * from CountryLanguage");
+printf("Affected rows (INSERT): %d\n", mysqli_affected_rows($link));
+
+mysqli_query($link, "ALTER TABLE Language ADD Status int default 0");
+
+/* update rows */
+mysqli_query($link, "UPDATE Language SET Status=1 WHERE Percentage > 50");
+printf("Affected rows (UPDATE): %d\n", mysqli_affected_rows($link));
+
+/* delete rows */
+mysqli_query($link, "DELETE FROM Language WHERE Percentage < 50");
+printf("Affected rows (DELETE): %d\n", mysqli_affected_rows($link));
+
+/* select all rows */
+$result = mysqli_query($link, "SELECT CountryCode FROM Language");
+printf("Affected rows (SELECT): %d\n", mysqli_affected_rows($link));
+
+mysqli_free_result($result);
+
+/* Delete table Language */
+mysqli_query($link, "DROP TABLE Language");
+
+/* close connection */
+mysqli_close($link);
+?>
