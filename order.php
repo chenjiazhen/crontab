@@ -45,8 +45,9 @@
             */
 
             //写入本地操作日志
-            $myfile = fopen(dirname(__FILE__) . "/logs.txt", "a") or die("Unable to open file!");
-            $txt = date('Y-m-d H:i', $time) . " 轮询关闭订单：" . $order['id'] . "\n\n";
+            $myfile = fopen(dirname(__FILE__) . "/orders.log", "a") or die("Unable to open file!");
+            //@example [2016-10-27 12:10] ■ ■ ■ ■ ■ POLLING_PROGRAM_CLOSE_ORDER >> [20161027000004];
+            $txt = '[' . date('Y-m-d H:i', $time) . '] ■ ■ ■ ■ ■ POLLING_PROGRAM_CLOSE_ORDER >> [' . $order['id'] . ']; \n';
             fwrite($myfile, $txt);
 
         }
