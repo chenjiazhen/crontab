@@ -3,7 +3,7 @@
     $localhost      = '192.168.10.88';
     $my_user        = 'root';
     $my_password    = '123456';
-    $world          = 'shopmall';
+    $world          = 'new_shopmall';
     
     $mysqli = new mysqli($localhost, $my_user, $my_password, $world);
 
@@ -54,6 +54,6 @@
     }
 
     $mysqli->close();
-    if ($myfile)
+    if (isset($myfile) && $myfile)
     fclose($myfile);
 ?>
