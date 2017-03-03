@@ -3,7 +3,7 @@
     $localhost      = '192.168.10.88';
     $my_user        = 'root';
     $my_password    = '123456';
-    $world          = 'new_shopmall';
+    $world          = 'shopmall';
     
     $mysqli = new mysqli($localhost, $my_user, $my_password, $world);
 
